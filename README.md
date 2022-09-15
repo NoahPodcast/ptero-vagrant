@@ -11,7 +11,7 @@ Install :
 
 ## Example setting up the environment on Ubuntu
 ```shell
-sudo apt install -y virtualbox vagrant git
+sudo apt install -y virtualbox vagrant git gh
 gh repo clone Vanepi-MC/ptero-vagrant
 cd ptero-vagrant
 vagrant up
