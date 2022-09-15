@@ -49,6 +49,8 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
+  config.vm.network "forwarded_port", guest: 8080, host: 80
+
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.memory = "2048"
