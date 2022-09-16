@@ -220,23 +220,21 @@ sudo chmod u+x /usr/local/bin/wings
 # Creation of configuration files
 sudo bash -c 'cat > /etc/pterodactyl/config.yml <<EOF
 debug: false
-uuid: 83374c67-681a-41b5-8598-d1aeb009b0ad
-token_id: x35UzI1SHCa9AZmp
-token: jt70SD7sfwywiLm9QiDGTEzucCkplACIixkQaL9Yruffd3nzf04nG9xPSSa7KJBF
+uuid: 684c545b-440a-4dd4-9c0b-dcae2c05188e
+token_id: KaOGtvvu80QqyoBc
+token: klOm7CD0XYyfMi3a6qyCXV4AQyVYReb28crMb17wJvKMcXP5bNzloyt4FKfDrvYZ
 api:
   host: 0.0.0.0
   port: 8080
   ssl:
     enabled: false
-    cert: /etc/letsencrypt/live/192.168.2.32/fullchain.pem
-    key: /etc/letsencrypt/live/192.168.2.32/privkey.pem
   upload_limit: 100
 system:
   data: /var/lib/pterodactyl/volumes
   sftp:
     bind_port: 2022
 allowed_mounts: []
-remote: '"'"'http://192.168.2.32:8080'"'"'
+remote: '"'"'http://localhost:8080'"'"'
 EOF'
 
 # Starting Wings
