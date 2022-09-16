@@ -18,6 +18,7 @@ gh repo clone Vanepi-MC/ptero-vagrant
 cd ptero-vagrant
 export PUBLIC_PTERO_IP=192.168.2.14
 vagrant up
+open http://$PUBLIC_PTERO_IP:8000
 ```
 
 # Usage
