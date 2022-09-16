@@ -1,7 +1,7 @@
 sudo apt update
 
 # Add "add-apt-repository" command
-sudo apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
+sudo apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg jq
 
 # Add additional repositories for PHP, Redis, and MariaDB
 sudo LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
@@ -40,6 +40,11 @@ EOF
 sudo cp .env.example .env
 sudo composer install -n --no-dev --optimize-autoloader
 sudo php artisan key:generate --force
+
+# For now we will enforce using a static Laraval encryption key so our hardcoded tokens in the database can keep functioning
+# TODO: Would be better to get mySQL to computer the Laraval encrypted keys from dynamic key created by artisan
+sudo sed -i 's/APP_KEY=.*/APP_KEY=base64:E4elE0kuWbKEMr7P7X6LBRmS96o7o4hi1NCrbcbde3I=/' .env
+
 
 # Setup the environment
 sudo php artisan p:environment:setup \
@@ -218,33 +223,44 @@ sudo curl -L -o /usr/local/bin/wings "https://github.com/pterodactyl/wings/relea
 sudo chmod u+x /usr/local/bin/wings
 
 # TODO 0: Create an API token in the mySQL database for calling Pterodactyl APIs afterwards
-# INSERT INTO api_keys ( ) VALUES (  )
+# Token: ptla_SJRT07zt5Ds ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu
+echo | sudo mysql -u root << EOF
+INSERT INTO panel.api_keys ( user_id, key_type, identifier, memo, created_at, updated_at, token, r_servers, r_nodes, r_allocations, r_users, r_locations, r_nests, r_eggs, r_database_hosts, r_server_databases ) VALUES (  1, 2, 'ptla_SJRT07zt5Ds', 'Vagrant token', now(), now(), 'eyJpdiI6IjhOUkdMemIrd1Y3NXIxM1RXa3NUSlE9PSIsInZhbHVlIjoiNHJlQXd0YlhyNlcwTndRZDBNRVdWTXlRMm5lSXJiNjZHaE5yZStaUDVHMkxyWEF4RHczRkRoVFVWdnhGY3I0KyIsIm1hYyI6IjVjZTBlYmY2OGU0NWM0NzQ0NTYzNWE1ODkzOTUyMmU1ZTk1MjNjOWIwMDZkOThhNDk0MDUxOWY0NDk3Njg5ZWIiLCJ0YWciOiIifQ==' , 3, 3, 3, 3, 3, 3, 3, 3, 3 );
+EOF
+
 # TODO 1: Call API for creating a Pterodactly location
+curl "http://localhost/api/application/locations" \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
+  -X POST \
+  -d '{
+  "short": "VM",
+  "long": "My local VM"
+}'
+
 # TODO 2: Call API for creating a Pterodactly node and receive token
+curl "http://localhost/api/application/nodes" \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
+  -X POST \
+  -d '{
+  "name": "My Node",
+  "location_id": 1,
+  "fqdn": "localhost",
+  "scheme": "http",
+  "memory": 1024,
+  "memory_overallocate": 0,
+  "disk": 1024,
+  "disk_overallocate": 0,
+  "upload_size": 100,
+  "daemon_sftp": 2022,
+  "daemon_listen": 8080
+}'
+
 # TODO 3: Create the Winds config file with the IDs received from Pterodactyl
-
-# Creation of configuration files
-sudo bash -c 'cat > /etc/pterodactyl/config.yml <<EOF
-debug: false
-uuid: 684c545b-440a-4dd4-9c0b-dcae2c05188e
-token_id: KaOGtvvu80QqyoBc
-token: klOm7CD0XYyfMi3a6qyCXV4AQyVYReb28crMb17wJvKMcXP5bNzloyt4FKfDrvYZ
-api:
-  host: 0.0.0.0
-  port: 8080
-  ssl:
-    enabled: false
-  upload_limit: 100
-system:
-  data: /var/lib/pterodactyl/volumes
-  sftp:
-    bind_port: 2022
-allowed_mounts: []
-remote: '"'"'http://localhost:8080'"'"'
-EOF'
-
-# Starting Wings
-sudo wings --debug
+cd /etc/pterodactyl && sudo wings configure --panel-url http://localhost --token ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu --node 1
 
 # Running Wings in the background
 sudo bash -c 'cat > /etc/systemd/system/wings.service <<EOF
@@ -274,5 +290,5 @@ sudo systemctl enable --now wings
 
 # Optional AF2 Activation
 echo | sudo mysql -u root -p << EOF
-UPDATE panel.settings SET value = 0 WHERE `key` = 'settings::pterodactyl:auth:2fa_required';
-EOF'
+UPDATE panel.settings SET value = 0 WHERE key = 'settings::pterodactyl:auth:2fa_required';
+EOF
