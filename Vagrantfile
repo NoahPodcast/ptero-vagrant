@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8080, host: 8080       # Wings HTTP daemon
 
   config.vm.provider "virtualbox" do |vb|
-    vb.gui = true
+    vb.gui = false
     vb.memory = "3072"
    end
 
