@@ -16,6 +16,7 @@ gh auth
 -> Avoir plus tard
 gh repo clone Vanepi-MC/ptero-vagrant
 cd ptero-vagrant
+export PUBLIC_PTERO_IP=192.168.2.14
 vagrant up
 ```
 
@@ -27,4 +28,4 @@ Setting up the virtual machine is as easy as running :
 vagrant up
 ```
 
-Pterodactyl will then be available on the [host machine on port 8080](http://localhost:8080)
+Pterodactyl will then be available on the [host machine on port 8000](http://localhost:8000)

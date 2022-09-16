@@ -1,3 +1,11 @@
+#!/bin/bash
+
+if [ -z "$PUBLIC_PTERO_IP" ]
+then
+      export PUBLIC_PTERO_IP=127.0.0.1
+fi
+echo The following IP will be expected: $PUBLIC_PTERO_IP
+
 sudo apt update
 
 # Add "add-apt-repository" command
@@ -115,7 +123,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo bash -c 'cat > /etc/nginx/sites-available/pterodactyl.conf <<EOF
 server {
     # Replace the example <localhost> with your domain name or IP address
-    listen 80;
+    listen 8000;
     server_name localhost;
 
 
@@ -229,7 +237,7 @@ INSERT INTO panel.api_keys ( user_id, key_type, identifier, memo, created_at, up
 EOF
 
 # TODO 1: Call API for creating a Pterodactly location
-curl "http://localhost/api/application/locations" \
+curl "http://localhost:8000/api/application/locations" \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
@@ -240,7 +248,7 @@ curl "http://localhost/api/application/locations" \
 }'
 
 # TODO 2: Call API for creating a Pterodactly node and receive token
-curl "http://localhost/api/application/nodes" \
+curl "http://localhost:8000/api/application/nodes" \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
@@ -248,7 +256,7 @@ curl "http://localhost/api/application/nodes" \
   -d '{
   "name": "My Node",
   "location_id": 1,
-  "fqdn": "localhost",
+  "fqdn": "'"$PUBLIC_PTERO_IP"'",
   "scheme": "http",
   "memory": 1024,
   "memory_overallocate": 0,
@@ -260,7 +268,9 @@ curl "http://localhost/api/application/nodes" \
 }'
 
 # TODO 3: Create the Winds config file with the IDs received from Pterodactyl
-cd /etc/pterodactyl && sudo wings configure --panel-url http://localhost --token ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu --node 1
+
+## HERE WE SHOULD ADD AN ARG OR SOMETHING SO THAT WINGS SETUP $PUBLIC_PTERO_IP AS THE FQDN TO USE
+cd /etc/pterodactyl && sudo wings configure --panel-url http://$PUBLIC_PTERO_IP:8000 --token ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu --node 1
 
 # Running Wings in the background
 sudo bash -c 'cat > /etc/systemd/system/wings.service <<EOF
