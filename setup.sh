@@ -217,6 +217,12 @@ sudo curl -L -o /usr/local/bin/wings "https://github.com/pterodactyl/wings/relea
 # Creation of the inter-file link (Wings)
 sudo chmod u+x /usr/local/bin/wings
 
+# TODO 0: Create an API token in the mySQL database for calling Pterodactyl APIs afterwards
+# INSERT INTO api_keys ( ) VALUES (  )
+# TODO 1: Call API for creating a Pterodactly location
+# TODO 2: Call API for creating a Pterodactly node and receive token
+# TODO 3: Create the Winds config file with the IDs received from Pterodactyl
+
 # Creation of configuration files
 sudo bash -c 'cat > /etc/pterodactyl/config.yml <<EOF
 debug: false
