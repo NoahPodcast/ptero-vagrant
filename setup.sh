@@ -1,7 +1,7 @@
 sudo apt update
 
 # Add "add-apt-repository" command
-sudo apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg jq
+sudo apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
 
 # Add additional repositories for PHP, Redis, and MariaDB
 sudo LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
