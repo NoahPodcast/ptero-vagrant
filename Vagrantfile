@@ -11,7 +11,16 @@ Vagrant.configure("2") do |config|
    end
 
   config.vm.provision "shell",
-    path: "setup.sh",
+    path: "0-install-deps.sh"
+
+  config.vm.provision "shell",
+    path: "1-install-ptero.sh"
+
+  config.vm.provision "shell",
+    path: "2-install-wings.sh"
+
+  config.vm.provision "shell",
+    path: "3-api-config.sh",
     env: {"PUBLIC_PTERO_IP":ENV['PUBLIC_PTERO_IP']}
 
 end
