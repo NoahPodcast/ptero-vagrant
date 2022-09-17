@@ -16,7 +16,7 @@ gh auth
 -> Avoir plus tard
 gh repo clone Vanepi-MC/ptero-vagrant
 cd ptero-vagrant
-export PUBLIC_PTERO_IP=192.168.2.14
+export PUBLIC_PTERO_IP=192.168.2.14   # If and only if you want your setup to be remotely accessible
 vagrant up
 open http://$PUBLIC_PTERO_IP:8000
 ```
