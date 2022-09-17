@@ -230,13 +230,13 @@ sudo curl -L -o /usr/local/bin/wings "https://github.com/pterodactyl/wings/relea
 # Creation of the inter-file link (Wings)
 sudo chmod u+x /usr/local/bin/wings
 
-# TODO 0: Create an API token in the mySQL database for calling Pterodactyl APIs afterwards
+# Create an API token in the mySQL database for calling Pterodactyl APIs afterwards
 # Token: ptla_SJRT07zt5Ds ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu
 echo | sudo mysql -u root << EOF
 INSERT INTO panel.api_keys ( user_id, key_type, identifier, memo, created_at, updated_at, token, r_servers, r_nodes, r_allocations, r_users, r_locations, r_nests, r_eggs, r_database_hosts, r_server_databases ) VALUES (  1, 2, 'ptla_SJRT07zt5Ds', 'Vagrant token', now(), now(), 'eyJpdiI6IjhOUkdMemIrd1Y3NXIxM1RXa3NUSlE9PSIsInZhbHVlIjoiNHJlQXd0YlhyNlcwTndRZDBNRVdWTXlRMm5lSXJiNjZHaE5yZStaUDVHMkxyWEF4RHczRkRoVFVWdnhGY3I0KyIsIm1hYyI6IjVjZTBlYmY2OGU0NWM0NzQ0NTYzNWE1ODkzOTUyMmU1ZTk1MjNjOWIwMDZkOThhNDk0MDUxOWY0NDk3Njg5ZWIiLCJ0YWciOiIifQ==' , 3, 3, 3, 3, 3, 3, 3, 3, 3 );
 EOF
 
-# TODO 1: Call API for creating a Pterodactly location
+# Call API for creating a Pterodactly location
 curl "http://localhost:8000/api/application/locations" \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -247,7 +247,7 @@ curl "http://localhost:8000/api/application/locations" \
   "long": "My local VM"
 }'
 
-# TODO 2: Call API for creating a Pterodactly node and receive token
+# Call API for creating a Pterodactly node
 curl "http://localhost:8000/api/application/nodes" \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -267,9 +267,20 @@ curl "http://localhost:8000/api/application/nodes" \
   "daemon_listen": 8080
 }'
 
-# TODO 3: Create the Winds config file with the IDs received from Pterodactyl
+# Create the default allocation on port 25565
+curl "http://localhost:8000/api/application/nodes/1/allocations" \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
+  -X POST \
+  -d '{
+  "ip": "0.0.0.0",
+  "ports": [
+    "25565"
+  ]
+}'
 
-## HERE WE SHOULD ADD AN ARG OR SOMETHING SO THAT WINGS SETUP $PUBLIC_PTERO_IP AS THE FQDN TO USE
+# Create the configuration file for wings
 cd /etc/pterodactyl && sudo wings configure --panel-url http://$PUBLIC_PTERO_IP:8000 --token ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu --node 1
 
 # Running Wings in the background
@@ -302,3 +313,38 @@ sudo systemctl enable --now wings
 echo | sudo mysql -u root -p << EOF
 UPDATE panel.settings SET value = 0 WHERE key = 'settings::pterodactyl:auth:2fa_required';
 EOF
+
+
+# Create the Minecraft server
+curl "http://localhost:8000/api/application/servers" \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
+  -X POST \
+  -d '{
+  "name": "Minecraft server",
+  "user": 1,
+  "egg": 5,
+  "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+  "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}",
+  "environment": {
+    "BUNGEE_VERSION": "latest",
+    "SERVER_JARFILE": "bungeecord.jar"
+  },
+  "limits": {
+    "memory": 0,
+    "swap": 0,
+    "disk": 0,
+    "io": 500,
+    "cpu": "0"
+  },
+  "feature_limits": {
+    "databases": 5,
+    "backups": 1
+  },
+  "allocation": {
+    "default": 1
+  }
+}'
+
+# Start the minecraft server
