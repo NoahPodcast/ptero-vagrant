@@ -4,6 +4,9 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8000, host: 8000       # Pterodactyl NGINX
   config.vm.network "forwarded_port", guest: 8080, host: 8080       # Wings HTTP daemon
   config.vm.network "forwarded_port", guest: 25565, host: 25565     # Minecraft server
+  config.vm.network "forwarded_port", guest: 3000, host: 3000       # Free port allowance
+  config.vm.network "forwarded_port", guest: 4000, host: 4000       # Free port allowance
+  config.vm.network "forwarded_port", guest: 5000, host: 5000       # Free port allowance
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
