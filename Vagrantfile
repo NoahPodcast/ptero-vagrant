@@ -5,13 +5,17 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8080, host: 8080       # Wings HTTP daemon
   config.vm.network "forwarded_port", guest: 25565, host: 25565     # Minecraft server
   config.vm.network "forwarded_port", guest: 3000, host: 3000       # Free port allowance
-  config.vm.network "forwarded_port", guest: 4000, host: 4000       # Free port allowance
-  config.vm.network "forwarded_port", guest: 5000, host: 5000       # Free port allowance
+  config.vm.network "forwarded_port", guest: 3001, host: 3001       # Free port allowance
+  config.vm.network "forwarded_port", guest: 3002, host: 3002       # Free port allowance
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.memory = "3072"
    end
+
+  config.vm.provision "shell",
+    inline: 'if [ -z "$PUBLIC_PTERO_IP" ]; then echo "PUBLIC_PTERO_IP is not defined! Check the README!"; exit 1; fi',
+    env: {"PUBLIC_PTERO_IP":ENV['PUBLIC_PTERO_IP']}
 
   config.vm.provision "shell",
     path: "0-install-deps.sh"
