@@ -9,6 +9,12 @@ CREATE DATABASE panel;
 GRANT ALL PRIVILEGES ON panel.* TO 'pterodactyl'@'127.0.0.1' WITH GRANT OPTION;
 EOF
 
+# Create the superadmin user in mySql
+echo | sudo mysql -u root << EOF
+CREATE USER 'superadmin'@'127.0.0.1' IDENTIFIED BY 'yourPassword';
+GRANT ALL PRIVILEGES ON *.* TO 'superadmin'@'127.0.0.1' WITH GRANT OPTION;
+EOF
+
 # Setup composer and generate keys
 sudo cp .env.example .env
 sudo composer install -n --no-dev --optimize-autoloader

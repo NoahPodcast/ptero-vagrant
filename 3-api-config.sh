@@ -90,15 +90,19 @@ EOF'
 sudo systemctl enable --now wings
 
 # Optional AF2 Activation
-echo | sudo mysql -u root -p << EOF
+echo | sudo mysql << EOF
 UPDATE panel.settings SET value = 0 WHERE key = 'settings::pterodactyl:auth:2fa_required';
 EOF
 
+# Create the Database host
+echo | sudo mysql << EOF
+INSERT INTO panel.database_hosts (name, host, port, username, password) VALUES ( 'dbhost', '127.0.0.1', 3306, 'superadmin', 'eyJpdiI6IjkwY3FSTlZiNXRkbGRMMmxheVg4RGc9PSIsInZhbHVlIjoia3hvb1JVQitjWWdWcmV2bTg3c0tkMFFnREt0amJKaG1DdGFEcGQ4Z0ZkVT0iLCJtYWMiOiI2NTIwMjU1ZTIyYzQ2YTA5NDEwNmYwNjQ1MjdkZmQxMjI3MzIzMWFjMmFmMDMzZGM3Y2ExOGQxNzFmOTcxZmYwIiwidGFnIjoiIn0=' );
+EOF
+
+sleep 5 # Wait for the server to be ready
 
 # Create the Minecraft server
-sleep 5 # Wait for the server to be ready
 SERVER_UUID=$(curl "http://localhost:8000/api/application/servers" \
-  -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu' \
   -X POST \
