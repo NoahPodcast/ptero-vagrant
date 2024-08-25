@@ -88,7 +88,7 @@ After the ending of the instalation, you can put this address into your browser.
     http://localhost:8000
 
 ---
-#### With Windows
+#### With Windows 
 ##### Dependencies:
 - [GIT](https://git-scm.com/downloads):
 - [Vagrant:](https://developer.hashicorp.com/vagrant/install#windows)
@@ -98,6 +98,8 @@ For [GIT](https://git-scm.com/downloads) download it with this command
 ```PowerShell
 winget install --id Git.Git -e --source winget
 ```
+> [!IMPORTANT]
+> For the Windows User, don't use the CMD, YOU NEED TO EXECUTE BY POWERSHELL!
 
 #### Installation:
 Go into your Desktop
@@ -259,6 +261,8 @@ Pour [GIT](https://git-scm.com/downloads), téléchargez-le avec cette commande
 ```PowerShell
 winget install --id Git.Git -e --source winget
 ```
+> [!IMPORTANT]
+> Pour l'utilisateur Windows, n'utilisez pas le CMD, VOUS DEVEZ EXÉCUTER PAR POWERSHELL !
 
 #### Installation :
 Allez dans votre bureau
