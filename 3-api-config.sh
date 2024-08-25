@@ -61,7 +61,7 @@ curl "http://localhost:8000/api/application/nodes/1/allocations" \
 }'
 
 # Create the configuration file for wings
-cd /etc/pterodactyl && sudo wings configure --panel-url http://$PUBLIC_PTERO_IP:8000 --token ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu --node 1
+cd /etc/pterodactyl && sudo wings configure --panel-url http://localhost:8000 --token ptla_SJRT07zt5DsxqEat0UnzD4YcceNptkDdTKvots0eJmu --node 1
 
 # Running Wings in the background
 sudo bash -c 'cat > /etc/systemd/system/wings.service <<EOF
@@ -88,11 +88,6 @@ EOF'
 
 # Activating Wings
 sudo systemctl enable --now wings
-
-# Optional AF2 Activation
-echo | sudo mysql << EOF
-UPDATE panel.settings SET value = 0 WHERE key = 'settings::pterodactyl:auth:2fa_required';
-EOF
 
 # Create the Database host
 echo | sudo mysql << EOF

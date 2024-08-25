@@ -53,10 +53,10 @@ sudo php artisan migrate --seed --force
 
 # Creating the first user
 sudo php artisan p:user:make \
-  --email=naubert@magesi.com \
-  --username=naubert \
-  --name-first=Noah \
-  --name-last=Aubert \
+  --email=email@example.com \
+  --username=admin \
+  --name-first=Prenom \
+  --name-last=Famille \
   --password=yourPassword \
   --admin=1
 

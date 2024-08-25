@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.memory = "3072"
+    vb.memory = "6114"
    end
 
   config.vm.provision "shell",
