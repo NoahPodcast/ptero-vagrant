@@ -34,7 +34,7 @@ cd ptero-vagrant
 export PUBLIC_PTERO_IP=$(ifconfig | grep 'inet[^6].*broadcast' | awk '{print $2}') && vagrant up
 open http://$PUBLIC_PTERO_IP:8000
 ```
-
+$Env:PUBLIC_PTERO_IP = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.PrefixOrigin -eq 'Dhcp' }).IPAddress
 
 # Usage
 

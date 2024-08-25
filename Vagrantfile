@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "hashicorp/bionic64"
+  config.vm.box = "bento/ubuntu-22.04"
   config.vm.network "forwarded_port", guest: 8000, host: 8000       # Pterodactyl NGINX
   config.vm.network "forwarded_port", guest: 8080, host: 8080       # Wings HTTP daemon
   config.vm.network "forwarded_port", guest: 25565, host: 25565     # Minecraft server
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
    end
 
   config.vm.provision "shell",
-    inline: 'if [ -z "$PUBLIC_PTERO_IP" ]; then echo "PUBLIC_PTERO_IP is not defined! Check the README!"; exit 1; fi',
+    inline: 'echo $SHELL; env; if [ -z "$PUBLIC_PTERO_IP" ]; then echo "PUBLIC_PTERO_IP is not defined! Check the README!"; exit 1; fi',
     env: {"PUBLIC_PTERO_IP":ENV['PUBLIC_PTERO_IP']}
 
   config.vm.provision "shell",
