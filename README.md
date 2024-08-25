@@ -1,5 +1,8 @@
+# Ptero Vagrant - Developpement Tools
+---
+![alt text](docs/ressources/logo-tools.png)
 
-
+---
 
 # Intro
 
@@ -9,8 +12,8 @@ This repo helps provisioning pterodactyl VMs with vagrant and VirtualBox
 
 Install :
 
-- Virtual Box : https://www.virtualbox.org/wiki/Downloads
-- Vagrant : https://www.vagrantup.com/downloads
+- Virtual Box : [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+- Vagrant : [https://www.vagrantup.com/downloads](https://www.vagrantup.com/downloads)
 
 ## Examples setting up environment
 

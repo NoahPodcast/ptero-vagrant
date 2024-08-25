@@ -1,8 +1,8 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "bento/ubuntu-22.04"
-  config.vm.network "forwarded_port", guest: 8000, host: 8000       # Pterodactyl NGINX
-  config.vm.network "forwarded_port", guest: 8080, host: 8080       # Wings HTTP daemon
+  config.vm.network "forwarded_port", guest: 8000, host: 8000       # Pterodactyl NGINX / Do not touch this port
+  config.vm.network "forwarded_port", guest: 8080, host: 8080       # Wings HTTP daemon / Do not touch this port
   config.vm.network "forwarded_port", guest: 25565, host: 25565     # Minecraft server
   config.vm.network "forwarded_port", guest: 3000, host: 3000       # Free port allowance
   config.vm.network "forwarded_port", guest: 3001, host: 3001       # Free port allowance
