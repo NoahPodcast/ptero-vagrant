@@ -6,7 +6,7 @@
 
 ### Quick Links
 - [English Documentation](#-english-documentation)
-- [Documentation Française](#-documentation-française)
+- [Documentation Française](docs/fr_readme.md)
 
 ---
 ## 🇬🇧 English Documentation
