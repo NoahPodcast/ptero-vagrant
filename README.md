@@ -33,7 +33,7 @@ Whether you are setting up a small VPS panel or managing a large-scale applicati
 ### How to run? (You need to open your terminal)
 ---
 #### With Linux:
-Now you can install: [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) and VirtualBox with this command.
+Now you can install: [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) with this command.
 
 > [!TIP]
 > In this case, we use apt because we use [Ubuntu](https://www.ubuntu-fr.org/) for the example but you can use: apk, yum and more.
@@ -94,7 +94,7 @@ After the ending of the instalation, you can put this address into your browser.
 ##### Dependencies:
 - [GIT](https://git-scm.com/downloads):
 - [Vagrant:](https://developer.hashicorp.com/vagrant/install#windows)
-- [Virtualbox:](https://www.virtualbox.org/wiki/Downloadswiki/Downloads)
+- [Virtualbox:](https://www.virtualbox.org/wiki/Downloads)
 
 For [GIT](https://git-scm.com/downloads) download it with this command
 ```PowerShell

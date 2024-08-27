@@ -94,7 +94,7 @@ Après la fin de l'installation, vous pouvez mettre cette adresse dans votre nav
 ##### Dépendances :
 - [GIT](https://git-scm.com/downloads) :
 - [Vagrant :](https://developer.hashicorp.com/vagrant/install#windows)
-- [Virtualbox :](https://www.virtualbox.org/wiki/Downloadswiki/Downloads)
+- [Virtualbox :](https://www.virtualbox.org/wiki/Downloads)
 
 Pour [GIT](https://git-scm.com/downloads), téléchargez-le avec cette commande
 ```PowerShell
