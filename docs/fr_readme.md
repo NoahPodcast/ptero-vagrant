@@ -61,7 +61,8 @@ Après la fin de l'installation, vous pouvez mettre cette adresse dans votre nav
 ---
 #### Avec MacOS
 
-> **Note d'avertissement**: Si vous avez un processeur M1, M2, M3, M4 ou M5, VirtualBox ne prend pas en charge la virtualisation pour ces processeurs. Seuls les utilisateurs de puces Intel ou AMD peuvent continuer.
+> [!CAUTION]
+> **Note d'avertissement** : Si vous avez un processeur M1, M2, M3, M4 ou M5, VirtualBox ne prend pas en charge la virtualisation pour ces processeurs. Seuls les utilisateurs de puces Intel ou AMD peuvent continuer.
 
 > [!IMPORTANT]
 > Si vous n'avez pas HomeBrew sur MacOS, vous devrez l'installer avec cette commande dans votre terminal.
@@ -69,10 +70,29 @@ Après la fin de l'installation, vous pouvez mettre cette adresse dans votre nav
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-Vous pouvez maintenant installer : [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) et [VirtualBox](https://www.virtualbox.org/wiki/Downloads) avec cette commande.
+
+##### Pour les utilisateurs Mac avec un processeur M1, M2, M3, M4 ou M5
+Maintenant, vous pouvez installer : [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) et [Vm-Ware Fusion Pro](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Fusion) avec cette commande.
+```Bash
+brew install -y vmware-fusion vagrant git
+```
+
+Installez [Vagrant VMware Utility](https://developer.hashicorp.com/vagrant/install/vmware)
+
+```Bash
+brew tap hashicorp/tap
+brew install hashicorp/tap/hashicorp-vagrant
+```
+
+##### Pour les utilisateurs Mac avec uniquement une puce Intel ou AMD
+
+Maintenant, vous pouvez installer : [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) et [VirtualBox](https://www.virtualbox.org/wiki/Downloads) avec cette commande.
 ```shell
 brew install -y virtualbox vagrant git
 ```
+
+##### Lancer le projet
+
 Vous devrez cloner le projet avec [GIT](https://git-scm.com/downloads).
 ```shell
 git clone git@github.com:Aesthy-Minecraft/ptero-vagrant.git

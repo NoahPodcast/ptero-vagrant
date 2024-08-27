@@ -69,10 +69,29 @@ After the ending of the instalation, you can put this address into your browser.
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
+##### For Mac Users with M1, M2, M3, M4, or M5 CPU
+Now you can install: [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) and [Vm-Ware Fusion Pro](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Fusion) with this command.
+```Bash
+brew install -y vmware-fusion vagrant git
+```
+
+Install [Vagrant VMware Utility](https://developer.hashicorp.com/vagrant/install/vmware)
+
+```Bash
+brew tap hashicorp/tap
+brew install hashicorp/tap/hashicorp-vagrant
+```
+
+##### For Mac Users with only Intel or AMD chip users
+
 Now you can install: [GIT](https://git-scm.com/downloads), [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) with this command.
 ```shell
 brew install -y virtualbox vagrant git
 ```
+
+##### Launch the project
+
 You will need to clone the project with [GIT](https://git-scm.com/downloads).
 ```shell
 git clone git@github.com:Aesthy-Minecraft/ptero-vagrant.git
