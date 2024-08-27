@@ -1,4 +1,4 @@
-# Ptero Vagrant - Developpement Tools
+# Ptero Vagrant - Development Tool
 ---
 ![alt text](docs/ressources/logo-tools.png)
 
@@ -13,7 +13,7 @@
 ---
 ### Introduction
 
-**Ptero Vagrant - Development Tools** is a powerful and flexible tool designed to automate the configuration and management of [Pterodactyl](https://pterodactyl.io/)-based VPS panels, using [Vagrant](https://www.vagrantup.com/). This tool allows users to easily create, configure and manage virtual machines, giving them the freedom to do whatever they want with their machines using [Ubuntu 22.04 LTS (Linux distributions)](https://www.ubuntu-fr.org/). It's simply a Linux machine with a pre-configured [Pterodactyl](https://pterodactyl.io/) server manager.
+**Ptero Vagrant - Development Tool** is a powerful and flexible tool designed to automate the configuration and management of [Pterodactyl](https://pterodactyl.io/)-based VPS panels, using [Vagrant](https://www.vagrantup.com/). This tool allows users to easily create, configure and manage virtual machines, giving them the freedom to do whatever they want with their machines using [Ubuntu 22.04 LTS (Linux distributions)](https://www.ubuntu-fr.org/). It's simply a Linux machine with a pre-configured [Pterodactyl](https://pterodactyl.io/) server manager.
 
 > [!NOTE]
 > Key features include:
@@ -22,7 +22,7 @@
 > - **Flexibility**: Easily modify and extend configurations to suit specific needs.
 > - **Isolation**: Keep environments isolated from the host machine, preventing conflicts and ensuring clean setups.
 
-Whether you are setting up a small VPS panel or managing a large-scale application, **Ptero Vagrant - Development Tools** provides the tools you need to maintain a productive and efficient workflow.
+Whether you are setting up a small VPS panel or managing a large-scale application, **Ptero Vagrant - Development Tool** provides the tools you need to maintain a productive and efficient workflow.
 
 ---
 

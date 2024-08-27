@@ -1,10 +1,10 @@
-# Ptero Vagrant - Developpement Tools
+# Ptero Vagrant - Outils de développement
 ---
 ![alt text](ressources/logo-tools.png)
 
 ---
 
-### Quick Links
+### Liens Rapides
 - [English Documentation](../README.md)
 - [Documentation Française](#-documentation-française)
 
@@ -23,7 +23,7 @@
 > - **Flexibilité** : Modifiez et étendez facilement les configurations pour répondre à des besoins spécifiques.
 > - **Isolation** : Gardez les environnements isolés de la machine hôte, évitant les conflits et garantissant des configurations propres.
 
-Que vous configuriez un petit panneau VPS ou que vous gériez une application à grande échelle, Ptero Vagrant - Outils de développement vous fournit les outils dont vous avez besoin pour maintenir un flux de travail productif et efficace.
+Que vous configuriez un petit panneau VPS ou que vous gériez une application à grande échelle, **Ptero Vagrant - Outils de développement** vous fournit les outils dont vous avez besoin pour maintenir un flux de travail productif et efficace.
 
 ---
 
@@ -46,7 +46,7 @@ Vous devrez cloner le projet avec [GIT](https://git-scm.com/downloads).
 ```shell
 git clone git@github.com:Aesthy-Minecraft/ptero-vagrant.git
 ```
-Accédez à votre dépôt
+Accédez à votre dépôt.
 ```shell
 cd ptero-vagrant
 ```
@@ -77,7 +77,7 @@ Vous devrez cloner le projet avec [GIT](https://git-scm.com/downloads).
 ```shell
 git clone git@github.com:Aesthy-Minecraft/ptero-vagrant.git
 ```
-Accédez à votre dépôt
+Accédez à votre dépôt.
 ```shell
 cd ptero-vagrant
 ```
@@ -96,7 +96,7 @@ Après la fin de l'installation, vous pouvez mettre cette adresse dans votre nav
 - [Vagrant :](https://developer.hashicorp.com/vagrant/install#windows)
 - [Virtualbox :](https://www.virtualbox.org/wiki/Downloads)
 
-Pour [GIT](https://git-scm.com/downloads), téléchargez-le avec cette commande
+Pour [GIT](https://git-scm.com/downloads), téléchargez-le avec cette commande.
 ```PowerShell
 winget install --id Git.Git -e --source winget
 ```
@@ -104,7 +104,7 @@ winget install --id Git.Git -e --source winget
 > Pour l'utilisateur Windows, n'utilisez pas le CMD, VOUS DEVEZ EXÉCUTER PAR POWERSHELL !
 
 #### Installation :
-Allez dans votre bureau
+Allez dans votre bureau.
 ```PowerShell
 cd Bureau
 ```
@@ -112,7 +112,7 @@ Vous devrez cloner le projet avec [GIT](https://git-scm.com/downloads).
 ```shell
 git clone git@github.com:Aesthy-Minecraft/ptero-vagrant.git
 ```
-Accédez à votre dépôt
+Accédez à votre dépôt.
 ```shell
 cd ptero-vagrant
 ```
