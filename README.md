@@ -51,7 +51,7 @@ cd ptero-vagrant
 ```
 Launch the tool with this command.
 ```shell
-export PUBLIC_PTERO_IP=$(hostname -I | awk '{print $1}') && vagrant up
+export PUBLIC_PTERO_IP=$(hostname -I | awk '{print $1}') && vagrant up --provider=virtualbox
 ```
 After the ending of the instalation, you can put this address into your browser.
 
@@ -102,7 +102,7 @@ cd ptero-vagrant
 ```
 Launch the tool with this command.
 ```shell
-export PUBLIC_PTERO_IP=$(hostname -I | awk '{print $1}') && vagrant up
+export PUBLIC_PTERO_IP=$(hostname -I | awk '{print $1}') && vagrant up --provider=virtualbox
 ```
 After the ending of the instalation, you can put this address into your browser.
 
