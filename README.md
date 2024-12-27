@@ -137,7 +137,7 @@ cd ptero-vagrant
 ```
 Launch the tool with this command.
 ```Powershell
-$Env:PUBLIC_PTERO_IP = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.PrefixOrigin -eq 'Dhcp' }).IPAddress; vagrant up
+$Env:PUBLIC_PTERO_IP = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.PrefixOrigin -eq 'Dhcp' }).IPAddress; vagrant up --provider=virtualbox
 ```
 After the ending of the instalation, you can put this address into your browser.
 
