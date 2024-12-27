@@ -129,7 +129,7 @@ cd Desktop
 ```
 You will need to clone the project with [GIT](https://git-scm.com/downloads).
 ```shell
-git clone git@github.com:Aesthy-Minecraft/ptero-vagrant.git
+git clone git@github.com:NoahPodcast/ptero-vagrant.git
 ```
 Go to your repository
 ```shell
